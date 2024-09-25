@@ -1,0 +1,15 @@
+\section{Theory and Design Space}
+\subsection{Why Use Images?}
+Thus far, we have motivated the use of images to serve as goals for policies enabled by robot foundation models. Here, we motivate why images are useful as a representation for both visualizing their desired goals as well as to manipulate them.
+
+\emph{As an output representation.} For the user, visually being able to inspect the robot's environment (either in physical form or as images) can make it easier to ground themselves when providing instructions. Beyond this, being able to quickly inspect sub-steps of a program could help them spot errors before they occur, when compared to a step-by-step language procedure which may be more difficult to scan especially if the steps contain long instructions.
+
+\emph{As an input representation.} When instructing a robot using language, user intent may be hard to convey due to ambiguities associated with language~\cite{masson2024directgpt, sundaresan2024rt}. For instance, when setting a table, simply saying ``put the plate and utensils on the table'' is not sufficient because it does not detail where the items should be placed (in absolute terms) or with respect to each other (in relative terms). In this case, the user needs to precisely phrase their instruction to describe the task but in a way that can be understood by the system (e.g., ``put the fork to the left of the plate but center it vertically''). 
+
+In contrast, images more concretely describe a desired outcome with less room for interpretation (e.g., putting the fork to the left of the plate and aligning it vertically). However, a major challenge lies in how to generate goal images for the robot to execute~\cite{sundaresan2024rt}. While prior work has shown that this can be achieved through autonomous methods (e.g., \cite{black2023zero}), such methods currently suffer from generating images with artifacts. Further, text-to-image models still struggle with the same problems of ambiguity along with needing to specify what parts of an image need to change and what parts need to stay the same. 
+
+We think that the direct manipulation could make it possible to quickly create images that more accurately capture a user's desired goals. For instance, through a simple drag-and-drop, the user can position a fork to the left of a plate to convey both absolute and relative positioning of the objects. Further, we think that the user's interactions with task-relevant objects of the environment through an image could make it possible to make inferences about their intent. For instance, dragging a dirty bowl from the dining table to the sink could signal that other utensils nearby might also need cleaning.
+
+\subsection{Program Representation as Images}
+
+\subsection{Model of Program Creation}

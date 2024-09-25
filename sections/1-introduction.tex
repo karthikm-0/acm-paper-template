@@ -1,9 +1,25 @@
 \section{Introduction}
-\mk{Computers \dots}
+%\mk{Computers \dots}
+%The advancement of large foundation models that process combination of language and vision has made robots more intelligent and capable of performing complex tasks.
+Robots are becoming increasingly autonomous and capable of performing complex tasks through the advent of robot foundation models (FM). Thus, we expect that robots will aid us in completing everyday tasks in the near-term. While these models are trained on internet-scale data, they still require end users to specify the contextual information and preferences needed to learn to successfully complete tasks in their environments~\cite{ajaykumar2021survey}. For instance, when asked to clean the kitchen after preparing a meal, the robot might attempt a generic procedure to find a rag and wipe down all the counters. However, the end user might want the robot to wash the dishes in the sink and put them away in the right places before wiping down the counters. Hence, the end user would need to intervene and modify the generic procedure into the desired one.
 
-\subsection*{Contributions}
-\mk{In summary, we contribute}
+Recently, researchers have explored different techniques to allow end users to provide clarifications and corrections to robots that plan using large language models (a class of FMs). In these systems, step-by-step procedures are represented as natural language, and the end user can provide feedback on the robot's procedure or actions through language~\cite{zha2023distilling, mahadevan2024generative}. Despite the proliferation of natural language for use in human-in-the-loop robotic systems, natural language is not always ideal. Natural language can be abstract and difficult to ground in the physical context. For instance, ``Put the bowl away'' is unclear if there are many bowls and several places to put them away. This means that the user needs to be more precise to achieve the desired result: ``Put the dirty blue bowl on the top left corner of the counter into the sink''. In general, it will be challenging for a user to predict the robot's planned actions with a language command, even if the user's intention is clear to them.
 
-\begin{itemize}[leftmargin=*]
-    \item   \mk{Contribution 1}
-\end{itemize}
+Instead of using solely natural language as a means for communication, we propose the use of images---both as a means for providing instructions to a robot, and for the robot to communicate what its plans are to the user. Images provide two main benefits over language. First, images are inherently easier to ground, as they visually represent the environment from which they originate. Hence, users should be able to contextualize the robot's current and future states through images. Second, by forming an appropriate representation of the environment as an image, we can enable direct manipulation~\cite{shneiderman1983direct}, which could be faster than forming precise language to provide instructions. Finally, by supporting direct manipulation, the robot can develop a representation of the user's intent informed by their actions, and use this to intelligently propose future appropriate actions.
+
+We realize this vision through a specific implementation, \projname, where users can manipulate images of the environment to create instructions for a robot. In a user study with 12 participants, we compared \projname to a language-based interface for several instruction following tasks. We found that participants were able to generate instructions in these tasks faster and with less errors when using \projname, and participants enjoyed the ability to directly manipulate images that our prototype supports. Lastly, we demonstrate that instructions created using \projname can be used to perform robot manipulation tasks.
+
+% % Challenge
+
+% % Hook
+% Something about LLMs/VLMs/robotics that we now have access to intelligent robotic models. Now we can do NLP-based programming of robots!
+
+% % Challenge
+% Language on its own is insufficient and can have issues. Plus models these days are vision-based (not sure if we need to include this)
+
+% % Contribution
+% We propose a novel interface that treats image as a first-class citizen. Image for input/output/errors
+
+% % Evaluation
+% We evaluated BLAH BLAH using BLAH BLAH.
+

@@ -1,0 +1,19 @@
+\section{Evaluation}
+We evaluated \projname through a controlled user study with twelve participants recruited using university and professional networks. Specifically, we compare an instance of \projname that only supports the direct manipulation of images without language, to a text-based method. Our goal in doing so was to understand the strengths and benefits of each individually. 
+
+We compare \projname to a text-based method as language has been widely deployed as both a modality for designing user interfaces to program robots [CITE] but also widely utilized in instruction following models [CITE].
+
+\emph{Conditions.} We compared \projname with a text-based interface, which we created by re-purposing \projname and replacing all image-based interactions with text. Instead of populating images in the timeline, the user populates each step with text. For the image-based method in \projname, we omit all language-based features (e.g., modifying images with captions) as well as autocomplete at the manipulation and step levels.
+
+\emph{Tasks.} Participants complete four kitchen manipulation tasks using both interfaces in the study. These include \textit{Organizing Pantry}, \textit{Sorting Fruits}, \textit{Preparing Stirfry}, and \textit{Washing Dishes}. At the end of the study, participants also complete a freeform task where they used some of the advanced features of \projname. Details of the individual tasks can be found in the appendices [TODO] and the website.
+ 
+% To complete these tasks, the participant is provided the initial robot state as an image and a desired goal image. 
+
+%%%% STATS about them like age, gender, etc. 
+
+\emph{Measures.} In the study, we collected data about participants' performance when using both methods. Quantitative measures include task completion time and number of errors made. Errors were measured by comparison to an \textit{oracle} representation of the task established a priori by two researchers.
+
+We also measured subjective perceptions of both interfaces. After each task, we measured participants' confidence that they correctly communicated their intent to the robot through a 7-point Likert scale question. At the end of each block of tasks representing a single condition, we administered two questionnaires to measure workload (i.e., NASA TLX [CITE]) as well as usability (i.e., SUS).
+
+
+\emph{Procedure.} In the study, participants first provided consent and completed a pre-study questionnaire assessing their familiarity with robots and instructing them. In our within-subjects study design, we used a Balanced Latin square to assign participants to one of the two conditions. Within a condition, tasks were assigned using a Balanced Latin square (ordered versus freeform).

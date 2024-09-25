@@ -1,0 +1,44 @@
+\section{\projname Interactions}
+Our system assumes a set-up phase where the robot builds an internal representation of the user's environment. This representation consists of objects that can be stateless or fixtures that are stateful (i.e., take on states). For instance, some items, like bowls, are \textit{objects} because they do not have states (but can vary in location or contents). Other items, like furniture (e.g., drawers) or appliances (e.g., stovetops) are \textit{fixtures} because they can be in one or more states (e.g., open or closed in the case of drawers). In \projname, the user interact with objects and fixtures in different ways. 
+
+%In our specific implementation, stateless objects are called \emph{items}, such as food (e.g., fruits) and utensils (e.g., bowls). \mk{Figure}. In contrast, stateful objects are called \emph{fixtures} which includes furniture (e.g,, cabinets and drawers) as well as appliances (e.g., stovetops or sinks). For instance, a drawer may be open or closed, and a stovetop may have any of its burners on or off. Once this representation is created, \projname keeps track of the current state as well as possible future states.
+
+% In our implementation, we assume access to the initial state of fixtures (but not objects) as well as knowledge about the states they can possible take (e.g,, that a drawer can be open or closed). 
+
+% Define step here as it pertains to user (not robot)
+\emph{Defining steps.} In \projname, a \textit{step} represents a desired change requested by the user to update the environment's state. Suppose the user wants the robot to put a dirty dish on the counter into the sink for rinsing. Steps here are defined as changes from the user's perspective. Thus, a possible next step could be for the dirty dish to be on the counter. Note that for a robot, executing this single step requires several actions: the robot needs to first pick up the dirty dish, and then place it in the sink.
+
+\emph{Viewing steps.} Each step in \projname is represented as an image inside a timeline. The timeline shows each step starting from the left and moving to the right. When the user starts \projname, a step representing the current world state populates the timeline. All future steps represent changes from this initial step.
+
+\emph{Editing and creating steps.} The user can modify steps in the timeline by hovering them to reveal a copy and delete command (but does not apply to the initial step). The user can add instructions by clicking any step in the timeline. This highlights the step and populates it inside an image editor which appears in the middle of the screen displaying the selected step. The editor allows standard pixel manipulation operations, including selection and manipulation.
+
+\emph{Interactable objects.} Once the editor appears, the user can perform simple drag and drop manipulations on one or many detected objects. When the user manipulates an object in the editor, it automatically populates a step in the timeline to the right of the current step. This also causes the current step to change to the newly created step which now appears in the editor. Continuously manipulating the same object does not create additional steps in case the user makes a mistake when they initially positioned the object during a manipulation.
+
+\emph{Interactable fixtures.} In \projname, the user can manipulate the state of detected fixtures by clicking them when they are highlighted by the mouse. This triggers the creation of a new step where the image represents the environment with the fixture's state having updated.
+
+\emph{Language-based editing.} In addition to direct manipulation, the user can also use natural language to request state changes. When a step is selected in the timeline and appears in the editor, the user can input an instruction using natural language. Upon submitting their input, \projname creates additional steps that attempt to address the changes the user requests. 
+
+\emph{Tracking changes between steps.} Since the user may create many steps while providing instructions to the robot, it may be cumbersome for them to keep track of changes particularly when the changes might be subtle. For instance, if the only change between two steps is a plate moving, they user might struggle to notice it. Hence, \projname allows the user to track changes between a selected step and any step they hover over in the timeline. This creates a looping animation that shows the changes occurring on the selected step in the timeline.
+
+\emph{Predicting future steps.} As the user adds new steps to the timeline, \projname attempts to recognize the user's end goals (e.g., to clean up after meal preparation). Using this knowledge, it automatically proposes steps to the user in the timeline. Proposed steps are visualized as semi-transparent to the user and can be added to the timeline by clicking them or rejected by pressing the ``x'' button that appears on the top-left. 
+
+%%%% Types of autocomplete
+% Proposing next steps based on existing steps - useful
+% Using object selection or current step to propose text (when using input bar) - less useful
+% Taking an interaction done by the user (e.g., dragging plate to sink) and proposing an action (drag x to y) automatically (ripped from Damien)
+% Proposing the step when an item is selected inside the current step (e.g., plate selected -> can go to cabinet, sink, counter??)
+
+
+%% What interactions are possible; for now drag/drop + click to change states
+
+
+% Reg drag and drop 
+
+% Articulated objects
+
+
+
+% Autocomplete features
+
+
+%\subsection{GIFs}

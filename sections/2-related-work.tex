@@ -1,6 +1,105 @@
-\section{Background and Related Work}
+\section{Related Work}
+There exists a spectrum of robotic systems, ranging from those designed to create reusable, repeatable routines (i.e., using end-user robot programming~\cite{lieberman2006end, ajaykumar2021survey}) to those enabling real-time control (i.e., teleoperation). Our system falls somewhere in between, blending elements of both approaches.
 
-\cite{kari2021transformr}
+\emph{End-user robot programming.} Prior work can be largely categorized into natural language-based and visual-based methods. Many systems employ speech for programming~\cite{cakmak2014teaching, gorostiza2011end}, though challenges remain in recognition and creating complex programs through continuous dialogue. Other approaches use text-based programming with visual scaffolds like blocks~\cite{huang2017code3, huang2016design, weintrop2018evaluating} or nodes~\cite{alexandrova2015roboflow,porfirio2018authoring}. Recently, large language models (LLMs) have been employed for text-based interactions, often via chat interfaces~\cite{karli2024alchemist, ge2024cocobo}. However, language input demands precision, especially for spatial tasks in robotics~\cite{masson2024directgpt, sundaresan2024rt}. Other systems span a range of visual modalities, such as augmented reality~\cite{ikeda2024programar, suzuki2022augmented, quintero2018robot, gong2019projection, cao2019ghostar}, spatial interfaces~\cite{huang2020vipo, cao2019v, mahadevan2022mimic}, sketch-based systems~\cite{sakamoto2009sketch, porfirio2023sketching}, physical demonstrations~\cite{akgun2012trajectories}, and tangible interaction~\cite{sefidgar2017situated, gao2019pati}. Despite the richness of prior EURP systems, they often require adherence to specific system rules. For instance, AR-based trigger-action programming~\cite{ikeda2024programar} necessitates precise trigger and action specifications within the user's AR environment. Moreover, many prior systems use intermediate representations (e.g., flow diagrams or blocks) to convey user intent. In contrast, \projname enables users to directly manipulate images to represent a desired world state without an intermediate representation.
+
+% Mention ~\cite{li2022scene} at some point.
+
+% FrameKit: A Tool for Authoring Adaptive User Interfaces Using
+% Keyframes
+
+% Montage: A Video Prototyping System to Reduce
+% Re-Shooting and Increase Re-Usability
+
+% Gaze+Hold: Eyes-only Direct Manipulation with Continuous
+% Gaze Modulated by Closure of One Eye
+
+% Authoring Sensor-based Interactions by Demonstration
+% with Direct Manipulation and Pattern Recognition
+
+% Multimodal Direct Manipulation in Video Conferencing:
+% Challenges and Opportunities
+
+% Representation
+% Blocks: Code3 ~\autoref{huang2017code3, huang2016design, weintrop2018evaluating}
+% Natural language: Alchemist ~\autoref{karli2024alchemist, ge2024cocobo}
+% Spatio-visual: ~\autoref{huang2020vipo, senft2021situated}
+% Demonstration + visual: ~\autoref{mahadevan2022mimic, porfirio2019bodystorming}
+
+%% Augmented reality: ~\autoref{ikeda2024programar, suzuki2022augmented, quintero2018robot, gong2019projection, cao2019ghostar}
+%% Tangible: ~\autoref{sefidgar2017situated, gao2019pati}
+%% Sketch: ~\autoref{porfirio2023sketching, sakamoto2009sketch}
+
+% Things to mention
+% - the type of representations thaat people use like block/tangible/etc.
+% - types of logic that programming has supported: loops/conditionals/
+% - granularity of program: low vs high level
+
+%https://dl.acm.org/doi/pdf/10.1145/2909824.3020249
+
+% \cite{huang2022inner} also explores the idea of using feedback but the feedback can come from several sources like automated success detectors, scene descriptors like object detection modules, and human feedback. Precursor to works like distillation but still valid and relevant.
+
+%\cite{yao2022react} A generalist paper that is talking about how LLMs on the whole can use language feedback to modify task-level step-by-step plans
+
+% \cite{yu2023language} Also talks about using language but to generate rewards for robot skills. Similar to mine but uses a module to generate rewards and a motion controller instead of APIs.
+
+% \cite{kwon2023toward} Use VLM and LLM loops to reason about things in a visual manner. In this manner, it is sort of suggesting that we don't necessarily need humans as much, but still a point towards visual information matters. Probably can borrow their motivation portions. In fact, they answer the question about commonsense but state clearly that somethings (and they have proof with user studies) are subjective like dirtiness. They even show that this improves overall grounded reasoning.
+
+% \cite{hunt2024survey} Read and include if necessary.
+
+% \subsection{End-User Robot Programming}
+% %Can model after 2.2 of https://arxiv.org/pdf/2406.00841.
+% End-user robot programming (EURP) aims to allow non-coders to program robot behaviors~\cite{lieberman2006end,ajaykumar2021survey}.
+% Early EURP tools tapped into showing users graphical representations of robot programs, such as flow diagrams~\cite{alexandrova2015roboflow,porfirio2018authoring}.
+% As these methods still require users to have some levels of understanding about a robot's available low-level actions, other work looked into programming robots by directly demonstrating desired behaviors through kinethestic teaching~\cite{akgun2012trajectories} or teleoperation~\cite{kitagawa2023online}.
+% Another line of work explored using visual mark-ups on environments to set robot trajectories and points of interests~\cite{cao2019v,liu2011roboshop}.  
+% However, these methods could not directly capture people's high-level goals, requiring them to sometimes arduously specifying individual actions.
+% One exception is RT-Sketch~\cite{sundaresan2024rt}, which could interpret high-level state change goals from users' sketches of desired world states.
+% However, as these sketches only captured object contours, they are limited in expressing object articulation and distinguishing similar objects.
+
+% Recent advances in AI has enabled users to program high-level robot behaviors through natural language~\cite{tellex2011understanding,liang2023code,winge2024talk}.
+% While expressive, natural language commands come with ambiguity that makes programming often more effortful than expected~\cite{stegner2024understanding}.
+% Some recent work combined visual editing with natural language input to resolve ambiguity and simplify verbal expressions~\cite{porfirio2023sketching}.
+% This research builds on existing work that leverages the complementary strengths of language and visual editing, and expands the expressiveness of visual editing by introducing object manipulation and state change generation.
+
+% \subsection{Human-in-the-Loop Robot Planning}
+% With the advent of robot foundation models, end-users may not need to program their robots completely from scratch as many prior systems assume. Instead, the end user's role may be to steer the model to plan towards their desired goals. Prior work has explored human-in-the-loop planning approaches to correct robots acting autonomously. In these settings, language has been seen as a natural fit to express user corrections or clarifications. For instance, it has been used to provide iterative corrections~\cite{zha2023distilling} that the robot can distill knowledge from in a future task (e.g., how to set a table) or to accelerate learning from specific users~\cite{liang2024learning}. It has been used to generate reward functions~\cite{yu2023language} or code~\cite{mahadevan2022mimic} to generate social robot behaviors. \projname enables user manipulations on images to refine and correct robot plans.
+
+\emph{Live Robot Control} 
+Modern robotic systems often include interfaces for the real-time teleoperation of the robots' joint and end-effector positions.
+These interfaces are often based on graphical user interfaces (GUIs) or joysticks, offering immediate feedback for the controllers to adjust their input~\cite{darvish2023teleoperation,rea2022still}.
+While effective, GUI- and joystick-based control mechanisms are cognitively and physically taxing for human operators, as they demands mental rotation and managing multiple separate degrees of freedom (DoFs) simultaneously.
+To alleviate this burden, one thread of recent teleoperation research aims to directly map human motion to robot motion, often from the motion of human hands to robot end-effectors~\cite{rakita2017motion,rakita2019shared,fu2024mobile}.
+Other work opts for a shared-control approach, where some trajectory prior informs a robot to generate high DoF trajectories from low DoF input.
+Such prior is often derived from inferred operator goals~\cite{huang2016anticipatory,jain2019probabilistic,losey2022learning}.
+Despite the assistance available, live control methods still require operators' continuous mental and physical engagement to manage robots' low-level motion.
+Therefore, PhotoManipulator, along with other recent research, seeks to enable robots to interpret and execute human operators' high level intents.
+
+
+\emph{Helping robots follow human instructions.} With the advent of foundation models (FM), end-users may not need to program their robots from scratch (as with EURP). Recent work has successfully deployed pre-trained LLMs for robotics tasks such as translating language instructions to policy code~\cite{liang2023code, singh2023progprompt, liu2024ok, mahadevan2024generative}. Previous work has demonstrated that language can be used to iteratively guide and correct robots, enabling them to learn from these interactions and apply that knowledge in future tasks~\cite{zha2023distilling, liang2024learning}. In contrast, other work has attempted to translate human instructions into robot actions directly by training robotic foundation models (RFM~\cite{kawaharazuka2024real}). Some of these techniques can generate actions when provided natural language inputs~\cite{driess2023palm, kim2024openvla}, such as, ``Bring me the chips from the drawer''. Alternatively, images can be used to represent goals, either as sub-steps of a task~\cite{black2023zero, nair2020contextual} or the final desired state~\cite{team2024octo, kapelyukh2023dall}. There are also attempts at using other modalities, including representing goals as sketches~\cite{sundaresan2024rt}, or desired trajectories overlaid on images~\cite{gu2023rt}. Our framework realized through \projname, is agnostic to the method used to provide instructions to the robot. This flexibility is achieved by separating the user's input representation when providing instructions from the representation used by the execute the instructions. For example, images can be captioned and sent as language instructions to a language-conditioned RFM. Alternatively, pre-trained models can translate images into executable code using existing skill primitives (e.g., picking up a coffee mug). The images can also be directly provided to an image-conditioned RFM.
+
+%Prior work has shown that image-conditioned policies currently outperform language-conditioned policies~\cite{team2024octo} possibly as images inherently contain more concrete information about how to perform a task in a given environment. Our work, \projname, is partially motivated by the need to create images to serve as an input for goal-conditioned robot policies.
+
+%To our knowledge, prior work (with the exception of RT-Sketch~\cite{sundaresan2024rt}) has assumed that goals can be autonomously generated (e.g., as in \cite{black2023zero}) to handle users' language instructions. This can be problematic both due to artifacts (an inherent limitation of diffusion models) and difficulties in precisely translating language instructions into images representing the user's desired goals. In contrast, we introduce \projname as a method to enable users to directly create images that represent sub-steps that a robot should execute using image-conditioned robot policies.
+
+%\cite{winge2024talk} Kind of relevant with the idea of end user adaptation of an existing robotic system but really not that interesting.
+
+%\cite{stegner2024understanding} Generalist paper about on-the-fly EURP. Might be able to refer to some of the challenges when talking about our solution (though we aren't fully building an EURP but it is the building blocks towards it to an extent).
+%e.g. Theme 1: End users viewed program steps to better understand the system: Relevant because we allow this
+%e.g. heme 4: End users had mixed experiences on interaction with the program synthesizer: Want to ensure our system provides users a sense of being in control
+%\mk{Talk about EURP work that uses image editing/sketch/environment editing.}
+%\cite{liu2011roboshop,skubic2007using} sketch-based interface for mobile robot control (little manipulation).
+%\cite{sundaresan2024rt} allows users to draw object contours to specify desired environmental changes. 
+
+
+%\cite{} Survey on EURP so regardless of anything we'd need to cite it.
+
+% \subsection{Interfaces for Authoring and Browsing Spatial Content}
+% Our prototype of \projname is directly inspired by significant HCI research into developing direct manipulation interfaces as well as interaction techniques for editing using keyframes.
+
+% \emph{Direct manipulation.} Prior work in HCI has explored the use of direct manipulation, an interaction style where objects of the interface can be interacted with via physical, reversible, and incremental actions and that provide immediate feedback~\cite{shneiderman1982future, shneiderman1983direct}. For instance, videos can be scrubbed by directly manipulating the content rather than the timeline~\cite{dragicevic2008video, karrer2008dragon}. Direct manipulation has also been used to support the navigation of 3D spatial recordings~\cite{lilija2020put, xia2018spacetime}. It has been used to support drawing tools to visualize data~\cite{xia2018dataink, kim2019datatoon}, make procedural art~\cite{jacobs2017supporting}, programming SVGs~\cite{hempel2016semi}, and creating illustrations~\cite{xia2016object}. Direct manipulation has seen some application in robotics, including for programming robot swarms~\cite{suzuki2018reactile, le2016zooids, suzuki2019shapebots}, and to teleoperate a robot by manipulating a virtual scene~\cite{li2022scene}. Our prototype, \projname, enables the direct manipulation of images to facilitate robot program creation.
+
+% \emph{Keyframe editing.} Prior work has investigated the design of interfaces that enable users to add keyframes to express moments of change in authoring and consumption tools. The idea has been extensively used for video browsing via extracted keyframes~\cite{huber2010toward, tse1998dynamic}. It has also been employed for creating animations~\cite{koyama2018optimo, zhou2024timetunnel, tseng2024keyframer} as well as the design of websites manually~\cite{krosnick2018expresso} or through computational assistance~\cite{wu2024framekit}. In \projname, all intermediate steps are represented as keyframes that can be quickly navigated, modified, and cloned.
 
 \begin{figure}[t]
     \centering
@@ -13,3 +112,5 @@
     \label{fig:background}
     % \vspace{-8mm}
 \end{figure}
+
+
