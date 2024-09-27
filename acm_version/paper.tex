@@ -1,0 +1,47 @@
+% Submission Deadline: October 1, 2024, 11:59 pm AoE.
+% https://humanrobotinteraction.org/2025/
+\documentclass[sigconf]{acmart}
+
+\AtBeginDocument{%
+  \providecommand\BibTeX{{%
+    \normalfont B\kern-0.5em{\scshape i\kern-0.25em b}\kern-0.8em\TeX}}}
+
+\input{sections/0f-acm-license.tex}
+\input{paper-macros}
+\input{paper-packages}
+\input{paper-settings}
+
+\sloppy
+\begin{document}
+
+% \title[\mk{\projname{PhotoManipulator}}]{\mk{Long Paper Title}}
+\title[\projname]{\projname: Manipulating Image and Language \\ to Convey User Intent to Robots}
+
+\input{sections/0a-authors}
+\input{sections/0c-abstract}
+\input{sections/0d-ccs}
+\input{sections/0b-teaserfigure}
+
+\maketitle
+
+\input{sections/1-introduction.tex}
+\input{sections/2-related-work}
+\input{sections/3-theory}
+\input{sections/4-approach}
+\input{sections/5-implementation}
+\input{sections/6-evaluation}
+\input{sections/7-discussion}
+\input{sections/8-conclusion}
+\input{sections/9-appendix}
+%\lipsum
+%\lipsum
+%\lipsum
+%\input{sections/7-conclusion}
+%\input{sections/8-appendix.tex}
+\input{sections/0e-acks}
+
+
+\bibliographystyle{ACM-Reference-Format}
+\bibliography{references}
+
+\end{document}

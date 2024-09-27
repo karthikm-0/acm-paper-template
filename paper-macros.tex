@@ -2,6 +2,26 @@
 
 %ImageInThat: Manipulating Image and Language to Convey Intent to Robots
 
+\definecolor{GREEN}{rgb}{0.0,0.7,0.0}
+\definecolor{BLUE}{rgb}{0.0,0.2,0.7}
+\definecolor{GOLD}{rgb}{0.6,0.6,0.0}
+\definecolor{CYAN}{rgb}{0.0,0.6,0.6}
+\definecolor{PURPLE}{rgb}{0.6,0.0,0.6}
+
+
+\newenvironment{commentwrapper}[1]{\color{#1}}{\color{black}}
+\newcommand{\authorcomment}[3]{\begin{commentwrapper}{#1}[#2:~#3]\end{commentwrapper}}
+
+\newcommand{\bla}[1]{\authorcomment{GREEN}{B}{#1}} 
+
+% call this command to hide all comments for submission or final version
+\newcommand{\hidecomments}{
+    \renewcommand{\authorcomment}[3]{} 
+    \renewcommand{\outline}[1]{} 
+    % \renewcommand{\fixme}[1]{\simplecomment{black}{#1}}
+}
+
+
 \newcommand{\mk}[1]{\textcolor{cyan}{[todo: #1]}}
 
 \newcommand{\figref}[1]{Fig. \ref{#1}}
